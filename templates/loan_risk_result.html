@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+		</div>
+		<h2 style="color:blue;font-size:30px;text-align: center;">Loan Risk Prediction </h2>
+
+	</div>
+	</header>
+	<p style="color:lightyellow;font-size:20px;text-align: center;"><b>Results for your inputs</b></p>
+	<div class="results">
+	</br>
+	{% if prediction == 1%}
+	<h2 style="color:black;font-size:30px;text-align: center">This is a good loan</h2>
+	{% elif prediction == 0%}
+	<h2 style="color:black;font-size:30px;text-align: center">This is a risky loan</h2>
+	{% endif %}
+
+	</div>
+    <style>
+        body {
+            background-image: url('static/veena_pic7.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            text-align: center;
+            padding: 0px;
+
+        }
+	</style>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+     <div style="color:snow">
+
+		 <h1 style="color:cyan;font-size:38px;">Loan Acceptance Prediction</h1>
+
+		  <h2 style="color:yellow;font-size:30px;text-align: center;">Upload a csv/excel file</h2>
+
+            <form class="" action="LA_bulk_predict" method="POST" enctype = "multipart/form-data">
+                <input id="second" type="file" name="file" value="" autocomplete="off" required>
+                <input id="third" type="submit" name="" value="Submit">
+            </form>
+
+          </br>
+     <p style="color:gold;font-size:30px;text-align: center; margin:0px;padding:15px;;"><b>For Single User</b></p>
+
+         </br>
+
+        <label for="Married"><B>Married</B> </label>
+        <select id="Married"name="Married" required>
+            <option value="" selected disabled hidden>Select </option>
+            <option value ="Yes">Yes</option>
+            <option value ="No">No</option>
+            </select>
+        <br> <br>
+
+        <label for="Property"><B>Property Area</B></label>
+        <select id="Property" name="Property"  required>
+            <option value="" selected disabled hidden> Select </option>
+            <option value ="Semi-Urban">Semi- Urban</option>
+            <option value ="Urban">Urban</option>
+            </select>
+        <br><br>
+       <label for="ApplicantIncome"><B>ApplicantIncome</B></label>
+
+            <input id="first" name="ApplicantIncome" required="required">
+      <br><br>
+
+      <label for="CoapplicantIncome"><B>CoapplicantIncome</B></label>
+
+            <input id="first" name="CoapplicantIncome" required="required">
+        <br><br>
+
+      <label for="LoanAmount"><B>LoanAmount</B></label>
+
+            <input id="first" name="CoapplicantIncome" required="required">
+        <br><br>
+      <label for="Loan_Amount_Term"><B>Loan_Amount_Term</B></label>
+
+            <input id="first" name="Loan_Amount_Term" required="required">
+        <br><br>
+
+    <label for="Credit_History"><B>Credit_History</B></label>
+
+            <input id="first" name="Credit_History" required="required">
+        <br><br>
+
+              <form action="predict_LA" method="POST">
+        	<p style="text-align: center;font-size:20px"><input id="sub" type="submit" class="btn-info" value="Predict"></P>
+               </form>
+
+
+        </form>
+
+
+    </div>
+
+
+
+
+    <style>
+        .footer {
+  width: auto;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: transparent;
+  text-align: center;
+}
+.responsive {
+  max-width: 15%;
+  height: auto;
+  }
+.sign{
+  max-width: 30%;
+  height: auto;
+  }
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+
+@prim: #53e3a6;
+body{
+    background: #50a3a2;
+background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: -moz-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: -o-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+}
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+  position: centre;
+
+  ::-webkit-input-placeholder { /* WebKit browsers */
+    font-family: 'Source Sans Pro', sans-serif;
+      color:    black;
+    font-weight: 300;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-family: 'Source Sans Pro', sans-serif;
+     color:    black;
+     opacity:  1;
+    font-weight: 300;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-family: 'Source Sans Pro', sans-serif;
+     color:    black;
+     opacity:  1;
+    font-weight: 300;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+    font-family: 'Source Sans Pro', sans-serif;
+     color:    black;
+    font-weight: 300;
+  }
+}
+
+.container{
+  background: #50a3a2;
+background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: -moz-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: -o-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+}
+.container{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  max-width: 340px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px 0;
+  position: middle;
+  /*height: 100%;*/
+  text-align: center;
+
+  h2{
+    font-size: 40px;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-put;
+    font-weight: 200;
+  }
+}
+
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 10px 15px;
+  background-color:transparent;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);  /*shadoow*/
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 25px;
+  padding: 3px;
+  width: 250px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+}
+
+
+label{
+  position: left;
+    text-align: left;
+    font-size: 20px;
+    color: black;
+    /*font-weight: 300;*/
+}
+select{
+  font-size:18px;
+width: 140px;
+}
+.fa-1x {
+font-size: 1.5rem;
+}
+.navbar-toggler.toggler-example {
+cursor: pointer;
+}
+./*dark-blue-text {
+color: #0A38F5;
+}*/
+.dark-pink-text {
+color: #AC003A;
+}
+.dark-amber-text {
+color: #ff6f00;
+}
+.dark-teal-text {
+color: #004d40;
+}
+        body {
+            background-image: url('https://us.123rf.com/450wm/panychev/panychev1902/panychev190200019/118076046-abstract-dark-blue-polygonal-mosaic-background-creative-design-template.jpg?ver=6');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            text-align: center;
+            padding: 0px;
+        }
+
+        #research {
+            font-size: 18px;
+            font-color: red;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+
+        #box {
+            border-radius: 60px;
+            border-color: red;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: darkorange;
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+
+        #fuel:hover {
+            background-color: coral;
+        }
+
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+
+        #research:hover {
+            background-color: coral;
+        }
+
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+
+        #resea:hover {
+            background-color: lavender;
+        }
+
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+
+        #sub:hover {
+            background-color: aquamarine;
+        }
+
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            text-color: red
+        }
+
+        #second {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #third {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #fourth {
+            border-radius: 14px;
+            height: 30px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</body>
+
+</html>

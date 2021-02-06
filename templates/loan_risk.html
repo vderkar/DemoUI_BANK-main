@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <title>Loan Risk</title>
+</head>
+
+<style>
+  #inputFields{
+  float:right;
+  font-size:20px;
+  }
+</style>
+
+<body style=" background-image: url('static/veena_pic7.png'); background-repeat:no-repeat; background-size: 1600px 800px;">
+    <div style = "margin:auto;"  >
+     
+      <h1 style="text-align: center; color:black ;font-size:35px; margin-top:2%; ">Loan Risk Prediction</h1><br>
+
+        <div style="font-size:18px;" class="mb-3 row">
+          <label  style="margin-left:630px; font-size:28px; color:yellow;" for="Upload_csv" class="col-sm-4 col-form-label"><B>Upload csv/excel:</B></label>
+           <form class="" action="LR_bulk_predict" method="POST" enctype = "multipart/form-data">
+          <div style="margin-left:530px;" class="col-sm-8">
+            <input id="second" type="file" name="file" value="" autocomplete="off" accept=".csv, application/vnd.ms-excel" required >
+             <input type="submit" name="" value="Submit">
+          </div>
+           </form>
+        </div>
+        <div id="myDIV">
+
+            <form style = "margin:auto; width: 48%; border: 3px solid grey; padding: 25px; " action="predict_LR" method="POST" enctype = "multipart/form-data">
+                
+                <div class="mb-3 row">
+                    <label style="font-size:20px;" for="LoanAmount" class="col-sm-3 col-form-label"><B>Loan Amount:</B></label>
+                    <div class="col-sm-3">
+                      <input placeholder="Enter in Thousands" id="LoanAmount" type="number" min="0" max="" name="LoanAmount" class="form-control" required>
+                    </div>
+          
+                    <label id="inputFields" for="Loan_Amount_Term" class="col-sm-3 col-form-label"><B>Loan Amount Term:</B></label>
+                    <div class="col-sm-3">
+                      <input placeholder="Enter in Months" id="Loan_Amount_Term" type="number" min="0" max="" name="Loan Amount Term" class="form-control" required>
+                    </div>
+                          </div>
+                
+                <div class="mb-3 row">
+                    <label style="font-size:20px;" for="Interest_Rate" class="col-sm-3 col-form-label"><B>Interest Rate:</B></label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter in Percentage" id="Interest_Rate" type="number" min="0" max="" name="Interest_Rate" class="form-control" required>
+                    </div>
+            
+                    <label id="inputFields" for="Employment_Years" class="col-sm-3 col-form-label"><B>Employment Years:</B></label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter in Years" id="Employment_Years" type="number" min="0" max="" name="Employment_Years" class="form-control" required>
+                    </div>
+                            </div>
+                
+                <div class="mb-3 row">
+                    <label style="font-size:20px;" for="Annual_Income" class="col-sm-3 col-form-label"><B>Annual Income:</B></label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter in Thousands" id="Annual_Income" type="number" min="0" max="" name="Annual_Income" class="form-control" required>
+                    </div>
+            
+                    <label id="inputFields" for="Debt_to_Income" class="col-sm-3 col-form-label"><B>Debt to Income:</B></label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter in Thousands" id="Debt_to_Income" type="number" min="0" max="" name="Debt_to_Income" class="form-control" required>
+                    </div>
+                            </div>
+
+                <div class="mb-3 row">
+                    <label style="font-size:20px;" for="Delinquent_2yr" class="col-sm-3 col-form-label"><B>Delinquent 2yr:</B></label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Here" id="Delinquent_2yr" type="number" min="0" max="" name="Delinquent_2yr" class="form-control" required>
+                    </div>
+            
+                    <label id="inputFields" for="Revolving_Cr_Util" class="col-sm-3 col-form-label"><B>Revolving Cr Util:</B></label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter in Thousands" id="Revolving_Cr_Util" type="number" min="0" max="" name="Revolving_Cr_Util" class="form-control" required>
+                    </div>
+                            </div>
+
+                <div class="mb-3 row">
+                    <label style="font-size:20px;" for="Total_Accounts" class="col-sm-3 col-form-label"><B>Total Accounts:</B></label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Account Count" id="Total_Accounts" type="number" min="0" max="" name="Total_Accounts" class="form-control" required>
+                    </div>
+            
+                    <label id="inputFields" for="Longest_Credit_Length" class="col-sm-3 col-form-label"><B>Longest Credit Length:</B></label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter in Months" id="Longest_Credit_Length" type="number" min="0" max="" name="Longest_Credit_Length" class="form-control" required>
+                    </div>
+                            </div>
+
+                <div class="mb-3 row">
+                    <label style="font-size:20px;" for="Home_Ownership" class="col-sm-3 col-form-label"><B>Home Ownership:</B></label>
+                    <div class="col-sm-3">
+                        <select id="Home_Ownership"name="Home_Ownership" class="form-control" required>
+                        <option value="" selected disabled hidden>Select</option>
+                        <option value ="RENT">Rent</option>
+                        <option value ="OWN">Own</option>
+                        <option value ="MORTGAGE">Mortgage</option>
+                        <option value ="OTHER">Other</option>
+                        <option value ="NONE">None</option>
+                        <option value ="ANY">Any</option>
+                        </select>
+                    </div>
+            
+                    <label id="inputFields" for="Verification_Status" class="col-sm-3 col-form-label"><B>Verification Status:</B></label>
+                    <div class="col-sm-3">
+                        <select id="Verification_Status" name="Verification_Status" class="form-control" required>
+                            <option value="" selected disabled hidden>Select</option>
+                            <option value ="VERIFIED - income">VERIFIED - income</option>
+                            <option value ="VERIFIED - income source">VERIFIED - income source</option>
+                            <option value ="not verified">Not Verified</option>
+                        </select>
+                    </div>
+                        </div>
+
+                <div class="mb-3 row">
+                    <label style="font-size:20px;" for="Loan_Purpose" class="col-sm-3 col-form-label"><B>Loan Purpose:</B></label>
+                    <div class="col-sm-3">
+                        <select id="Loan_Purpose"name="Loan_Purpose" class="form-control" required>
+                        <option value="" selected disabled hidden>Select</option>
+                        <option value ="credit_card">credit card</option>
+                        <option value ="car">car</option>
+                        <option value ="small_business">small business</option>
+                        <option value ="other">other</option>
+                        <option value ="wedding">wedding</option>
+                        <option value ="debt_consolidation">debt consolidation</option>
+                        <option value ="home_improvement">home improvement</option>
+                        <option value ="major_purchase">major purchase</option>
+                        <option value ="medical">medical</option>
+                        <option value ="moving">moving</option>
+                        <option value ="vacation">vacation</option>
+                        <option value ="house">house</option>
+                        <option value ="renewable_energy">renewable energy</option>
+                        <option value ="educational">educational</option>
+                        </select>
+                    </div>
+            
+                    <label id="inputFields" for="State" class="col-sm-3 col-form-label"><B>State:</B></label>
+                    <div class="col-sm-3">
+                        <select id="State" name="State" class="form-control" required>
+                            <option value="" selected disabled hidden>Select</option>
+                            <option value ="AZ">AZ</option>
+                            <option value ="GA">GA</option>
+                            <option value ="IL">IL</option>
+                            <option value ="CA">CA</option>
+                            <option value ="TX">TX</option>
+                            <option value ="VA">VA</option>
+                            <option value ="MO">MO</option>
+                            <option value ="CT">CT</option>
+                            <option value ="UT">UT</option>
+                            <option value ="FL">FL</option>
+                            <option value ="NY">NY</option>
+                            <option value ="PA">PA</option>
+                            <option value ="MN">MN</option>
+                            <option value ="NJ">NJ</option>
+                            <option value ="OR">OR</option>
+                            <option value ="KY">KY</option>
+                            <option value ="OH">OH</option>
+                            <option value ="SC">SC</option>
+                            <option value ="RI">RI</option>
+                            <option value ="LA">LA</option>
+                            <option value ="MA">MA</option>
+                            <option value ="WA">WA</option>
+                            <option value ="WI">WI</option>
+                            <option value ="AL">AL</option>
+                            <option value ="NV">NV</option>
+                            <option value ="CO">CO</option>
+                            <option value ="MD">MD</option>
+                            <option value ="WV">WV</option>
+                            <option value ="VT">VT</option>
+                            <option value ="MI">MI</option>
+                            <option value ="DC">DC</option>
+                            <option value ="SD">SD</option>
+                            <option value ="NC">NC</option>
+                            <option value ="AR">AR</option>
+                            <option value ="KS">KS</option>
+                            <option value ="NM">NM</option>
+                            <option value ="HI">HI</option>
+                            <option value ="AK">AK</option>
+                            <option value ="OK">OK</option>
+                            <option value ="MT">MT</option>
+                            <option value ="WY">WY</option>
+                            <option value ="NH">NH</option>
+                            <option value ="DE">DE</option>
+                            <option value ="MS">MS</option>
+                            <option value ="TN">TN</option>
+                            <option value ="IA">IA</option>
+                            <option value ="NE">NE</option>
+                            <option value ="ID">ID</option>
+                            <option value ="IN">IN</option>
+                            <option value ="ME">ME</option>
+                        </select>
+                    </div>
+                        </div>
+
+        </div>
+    </br>
+      <input class="btn btn-warning" style="margin-left: 720px" id="sub" type="submit" value="Predict">
+    </form>                                               
+
+  <br><br>
+
+  </div>
+
+<script>
+function myFunction() {
+var x = document.getElementById("myDIV");
+if (x.style.display === "none") {
+  x.style.display = "block";
+} else {
+  x.style.display = "none";
+}
+}
+</script>
+
+  </body>
+</html>

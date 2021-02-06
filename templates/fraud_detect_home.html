@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+ 
+     <div style="color:snow">
+
+         <h1 style="color:cyan;font-size:38px;">Fraud Prediction in Financial Payment Services</h1>
+
+         <h2 style="color:gold;font-size:30px;text-align: center;"><b>Upload a csv/excel file</b></h2>
+
+            <form class="" action="bulk_predict" method="POST" enctype = "multipart/form-data">
+                <input id="second" type="file" name="file" value="" autocomplete="off" required>
+                <input id="second" type="submit" name="" value="Submit">
+            </form>
+
+     </br>
+     <p style="color:gold;font-size:30px;text-align: center; margin:0px;padding:15px;;"><b>For Single User</b></p>
+
+        <form action="FD" method="post">
+            <label style="font-size:25px;"><b>Select Payment Type &nbsp;&nbsp; </b></label><select name="type" id="resea" required="required">
+                <option value="Payment">Payment</option>
+                <option value="Transfer">Transfer</option>
+                <option value="Debit">Debit</option>
+                <option value="Cash_in">Cash_in</option>
+                <option value="Cash_out">Cash_out</option>
+            </select>
+            <br><br>
+
+            <label style="font-size:25px;" for="amount"><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </B></label>
+            <input id="first" name="amount" required="required">
+            <br><br>
+
+            <label style="font-size:25px;" for="oldbalanceOrg"><B>OldbalanceOrg</B></label>
+            <input id="first" name="oldbalanceOrg" required="required">
+            <br><br>
+
+            <label style="font-size:25px;" for="NewbalanceOrig"><B>NewbalanceOrg</B></label>
+            <input id="first" name="NewbalanceOrig" required="required">
+            <br><br>
+
+            <label style="font-size:25px;" for="OldbalanceDest"><B>OldbalanceDest</B></label>
+            <input id="first" name="OldbalanceDest" required="required">
+            <br><br>
+
+           <label style="font-size:25px;" for="NewbalanceDest"><B>NewbalanceDest</B></label>
+            <input id="first" name="NewbalanceDest" required="required">
+
+
+         </form>
+
+            <br>
+               <form action="predict" method="POST">
+        	<p style="text-align: center;font-size:20px"><input id="fraud" type="submit" class="btn-info" value="Predict"></P>
+               </form>
+    </div>
+
+    <style>
+
+        #fraud {
+            border-radius: 14px;
+            height: 35px;
+            font-size: 25px;
+            text-align: center;
+        }
+        #fraud:hover {
+            background-color: aquamarine;
+        }
+    h2{
+		margin:0px;
+		 padding:15px;
+		  }
+
+        .footer {
+  width: auto;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: transparent;
+  text-align: center;
+}
+
+  h2{
+    font-size: 40px;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-put;
+    font-weight: 200;
+  }
+
+        body {
+            background-image: url('https://us.123rf.com/450wm/panychev/panychev1902/panychev190200019/118076046-abstract-dark-blue-polygonal-mosaic-background-creative-design-template.jpg?ver=6');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            text-align: center;
+            padding: 0px;
+        }
+
+
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+
+        #resea:hover {
+            background-color: lavender;
+        }
+
+
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+            text-color: black
+        }
+
+        #second {
+            border-radius: 14px;
+            height: 35px;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        #fourth {
+            border-radius: 14px;
+            height: 30px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</body>
+
+</html>
